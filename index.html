@@ -1,90 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><style>
-@font-face {
-  font-family: "Optimistic";
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Optimistic Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
-}
-:where(html) {
-  font-family: "Optimistic", system-ui, sans-serif;
-}
-:where(code, pre, kbd, samp) {
-  font-family: "Optimistic Mono", ui-monospace, monospace;
-}
-</style>
+<head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>RISE StudyBank - CSEC GUYANA</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui;background:#f8fafc;color:#0f172a}
-.top{background:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e2e8f0;position:sticky;top:0}
-.logo{display:flex;align-items:center;gap:10px}.pill{background:#1e3a8a;color:#fff;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none}
-.card{background:#fff;border-radius:20px;padding:20px;margin:14px;box-shadow:0 4px 18px rgba(0,0,0,.06)}
-h1{font-size:28px} .blue{color:#1e40af} .btn{width:100%;border:0;border-radius:999px;padding:16px;font-weight:800;cursor:pointer} .btn-blue{background:#1e3a8a;color:#fff}
-.input{width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:12px;margin:8px 0;font-size:16px}
-.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#e0f2fe;color:#0c4a6e;font-weight:700;font-size:12px}
-.hidden{display:none} .small{font-size:13px;color:#64748b}
-</style>
+<style>*{box-sizing:border-box}body{margin:0;font-family:system-ui;background:#f8fafc;color:#0f172a}.top{background:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e2e8f0;position:sticky;top:0}.logo{display:flex;align-items:center;gap:10px}.pill{background:#1e3a8a;color:#fff;padding:10px 18px;border-radius:999px;font-weight:800;text-decoration:none}.card{background:#fff;border-radius:20px;padding:20px;margin:14px;box-shadow:0 4px 18px rgba(0,0,0,.06)}h1{font-size:28px}.blue{color:#1e40af}.btn{width:100%;border:0;border-radius:999px;padding:16px;font-weight:800;cursor:pointer}.btn-blue{background:#1e3a8a;color:#fff}.input{width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:12px;margin:8px 0;font-size:16px}.hidden{display:none}.small{font-size:13px;color:#64748b}</style>
 </head>
 <body>
 <div class="top"><div class="logo"><img src="logo.png" style="width:52px;height:52px;object-fit:contain"><div><b>RISE StudyBank</b><div style="font-size:11px;color:#64748b">CSEC • GUYANA</div></div></div><a class="pill" href="#join">Join - $2000</a></div>
-
-<div id="view-join">
-<div class="card"><div class="small">Live: <span id="liveStatus">ready</span> ● CSEC PREP ● AI TUTOR</div>
-<h1>Unlock All Subjects.<br><span class="blue">Study Smarter.</span></h1>
-<p class="small">After you submit, we open WhatsApp to 592-766-4692 automatically — admin sees you instantly.</p>
-<button class="btn btn-blue" onclick="document.getElementById('joinForm').scrollIntoView({behavior:'smooth'})">Join RISE StudyBank</button></div>
-
-<div id="joinForm" class="card">
-<h3>Join - FIXED (persists after reload)</h3>
-<input id="name" class="input" placeholder="Full Name">
-<input id="wa" class="input" placeholder="WhatsApp Number">
-<input id="txn" class="input" placeholder="MMG Transaction ID">
-<button class="btn btn-blue" onclick="doJoin()">Submit & Send to WhatsApp</button>
-<p id="joinMsg" class="small" style="color:red"></p>
-</div>
-</div>
-
-<div id="view-pending" class="hidden">
-<div class="card" style="background:#1e3a8a;color:#fff">
-<h2>✅ Request Sent!</h2><p>Hi <b id="pName"></b>, ID <b id="pId"></b> pending.</p>
-<p>WhatsApp to 592-766-4692 opened. <a id="waLink" style="color:#93c5fd" target="_blank">Tap to open again</a></p>
-<p class="small" style="color:#bfdbfe">Txn: <span id="pTxn"></span> | Status: <span id="pStatus">pending</span></p>
-<button class="btn" style="background:#fff;color:#1e3a8a" onclick="checkStatus()">Check Approval Status</button>
-<button class="btn" style="background:transparent;color:#93c5fd;margin-top:8px" onclick="resetLocal()">Reset</button>
-</div></div>
-
+<div id="view-join"><div class="card"><div class="small">Live: <span id="liveStatus">ready</span></div><h1>Unlock All Subjects.<br><span class="blue">Study Smarter.</span></h1><p class="small">After submit, WhatsApp to 592-766-4692 auto-opens — admin sees you instantly.</p><button class="btn btn-blue" onclick="document.getElementById('joinForm').scrollIntoView({behavior:'smooth'})">Join RISE StudyBank</button></div>
+<div id="joinForm" class="card"><h3>Join - FIXED</h3><input id="name" class="input" placeholder="Full Name"><input id="wa" class="input" placeholder="WhatsApp Number"><input id="txn" class="input" placeholder="MMG Transaction ID"><button class="btn btn-blue" onclick="doJoin()">Submit & Send to WhatsApp</button><p id="joinMsg" class="small" style="color:red"></p></div></div>
+<div id="view-pending" class="hidden"><div class="card" style="background:#1e3a8a;color:#fff"><h2>✅ Request Sent!</h2><p>Hi <b id="pName"></b>, ID <b id="pId"></b> pending.</p><p><a id="waLink" style="color:#93c5fd" target="_blank">Open WhatsApp to 592-766-4692 again</a></p><p class="small" style="color:#bfdbfe">Txn: <span id="pTxn"></span> | <span id="pStatus">pending</span></p><button class="btn" style="background:#fff;color:#1e3a8a" onclick="checkStatus()">Check Approval</button><button class="btn" style="background:transparent;color:#93c5fd;margin-top:8px" onclick="resetLocal()">Reset</button></div></div>
 <div id="view-active" class="hidden"><div class="card" style="background:#dcfce7"><h2>🎉 Active!</h2><p><b id="aName"></b> - <span id="aId"></span></p><p>Expires: <span id="aExp"></span></p></div></div>
-
 <script>
-const LS_CURRENT='rise_current_student', LS_LIST='rise_students_v2', CLOUD='https://script.google.com/macros/s/AKfycbw9NfMJI2qb9yp4rLovSNSwy29RgvytHanl9BA1SfVCwbLq5DV9HsKwodq977bmclp_/exec';
-function genId(fn){ return `RISE-${(fn.split(' ')[0]||'STUDENT').toUpperCase()}-${Math.floor(1000+Math.random()*9000)}-2026`; }
-function saveCurrent(s){ localStorage.setItem(LS_CURRENT, JSON.stringify(s)); let l=[]; try{l=JSON.parse(localStorage.getItem(LS_LIST)||'[]')}catch(e){}; let i=l.findIndex(x=>x.id===s.id); if(i>=0)l[i]=s; else l.push(s); localStorage.setItem(LS_LIST, JSON.stringify(l));}
-function loadCurrent(){ try{ return JSON.parse(localStorage.getItem(LS_CURRENT)||'null'); }catch(e){return null;} }
-function waUrl(p,t){ return `https://wa.me/${p.replace(/[^0-9]/g,'')}?text=${encodeURIComponent(t)}`; }
-async function doJoin(){
- let name=document.getElementById('name').value.trim(), wa=document.getElementById('wa').value.trim(), txn=document.getElementById('txn').value.trim(), msg=document.getElementById('joinMsg');
- if(name.length<3){msg.textContent='Enter name'; return;} if(wa.length<7){msg.textContent='Enter WhatsApp'; return;}
- let id=genId(name), student={id,name,whatsapp:wa,txnId:txn,status:'pending',paidAt:new Date().toISOString(),expires:''};
- document.getElementById('liveStatus').textContent='saving...'; saveCurrent(student);
- try{ await fetch(CLOUD,{method:'POST',mode:'no-cors',body:JSON.stringify({action:'add',student})}); }catch(e){}
- let text=`Hi RISE Admin, I joined! Name: ${name} ID: ${id} WhatsApp: ${wa} Txn: ${txn} Please approve.`; window.open(waUrl('5927664692',text),'_blank'); showPending(student);
-}
-function showPending(s){ document.getElementById('view-join').classList.add('hidden'); document.getElementById('view-active').classList.add('hidden'); document.getElementById('view-pending').classList.remove('hidden'); document.getElementById('pName').textContent=s.name; document.getElementById('pId').textContent=s.id; document.getElementById('pTxn').textContent=s.txnId; document.getElementById('pStatus').textContent=s.status; document.getElementById('waLink').href=waUrl('5927664692',`Hi Admin, ID ${s.id} pending`); }
-function showActive(s){ document.getElementById('view-join').classList.add('hidden'); document.getElementById('view-pending').classList.add('hidden'); document.getElementById('view-active').classList.remove('hidden'); document.getElementById('aName').textContent=s.name; document.getElementById('aId').textContent=s.id; document.getElementById('aExp').textContent=s.expires; }
-function showJoin(){ document.getElementById('view-join').classList.remove('hidden'); document.getElementById('view-pending').classList.add('hidden'); document.getElementById('view-active').classList.add('hidden'); }
-function checkStatus(){ let cur=loadCurrent(); if(!cur) return showJoin(); fetch(CLOUD+'?action=list').then(r=>r.json()).then(data=>{ let f=data.find(o=> (o.id||o.StudentID||'')===cur.id ); if(f){ let st=(f.status||f.Status||'pending').toLowerCase(); cur.status=st; cur.expires=f.expires||f.ExpiresAt||''; saveCurrent(cur); if(st==='active') showActive(cur); else showPending(cur); } else showPending(cur); }).catch(e=>{ let c=loadCurrent(); if(c) showPending(c); }); }
-function resetLocal(){ if(confirm('Reset?')){ localStorage.removeItem(LS_CURRENT); showJoin(); } }
-(function(){ let cur=loadCurrent(); if(cur){ if(cur.status==='active') showActive(cur); else showPending(cur); document.getElementById('liveStatus').textContent='restored: '+cur.id; } })();
+const CLOUD='https://script.google.com/macros/s/AKfycbw9NfMJI2qb9yp4rLovSNSwy29RgvytHanl9BA1SfVCwbLq5DV9HsKwodq977bmclp_/exec';
+function genId(fn){return `RISE-${(fn.split(' ')[0]||'STUDENT').toUpperCase()}-${Math.floor(1000+Math.random()*9000)}-2026`;}
+function saveCurrent(s){localStorage.setItem('rise_current_student',JSON.stringify(s));let l=[];try{l=JSON.parse(localStorage.getItem('rise_students_v2')||'[]')}catch(e){}let i=l.findIndex(x=>x.id===s.id);if(i>=0)l[i]=s;else l.push(s);localStorage.setItem('rise_students_v2',JSON.stringify(l));}
+function loadCurrent(){try{return JSON.parse(localStorage.getItem('rise_current_student')||'null')}catch(e){return null}}
+async function doJoin(){let name=document.getElementById('name').value.trim(),wa=document.getElementById('wa').value.trim(),txn=document.getElementById('txn').value.trim();if(name.length<3||wa.length<7){document.getElementById('joinMsg').textContent='Enter name & WhatsApp';return}let id=genId(name),st={id,name,whatsapp:wa,txnId:txn,status:'pending',paidAt:new Date().toISOString(),expires:''};saveCurrent(st);try{await fetch(CLOUD,{method:'POST',mode:'no-cors',body:JSON.stringify({action:'add',student:st})})}catch(e){}let txt=`Hi RISE Admin, I joined! Name: ${name} ID: ${id} WhatsApp: ${wa} Txn: ${txn} Please approve.`;window.open(`https://wa.me/5927664692?text=${encodeURIComponent(txt)}`,'_blank');showPending(st);}
+function showPending(s){document.getElementById('view-join').classList.add('hidden');document.getElementById('view-active').classList.add('hidden');document.getElementById('view-pending').classList.remove('hidden');document.getElementById('pName').textContent=s.name;document.getElementById('pId').textContent=s.id;document.getElementById('pTxn').textContent=s.txnId;document.getElementById('pStatus').textContent=s.status;document.getElementById('waLink').href=`https://wa.me/5927664692?text=Hi Admin ID ${s.id} pending`;}
+function showActive(s){document.getElementById('view-join').classList.add('hidden');document.getElementById('view-pending').classList.add('hidden');document.getElementById('view-active').classList.remove('hidden');document.getElementById('aName').textContent=s.name;document.getElementById('aId').textContent=s.id;document.getElementById('aExp').textContent=s.expires;}
+function showJoin(){document.getElementById('view-join').classList.remove('hidden');document.getElementById('view-pending').classList.add('hidden');document.getElementById('view-active').classList.add('hidden');}
+function checkStatus(){let cur=loadCurrent();if(!cur)return showJoin();fetch(CLOUD+'?action=list').then(r=>r.json()).then(d=>{let f=d.find(o=>(o.id||o.StudentID||'')===cur.id);if(f){let st=(f.status||f.Status||'pending').toLowerCase();cur.status=st;cur.expires=f.expires||f.ExpiresAt||'';saveCurrent(cur);if(st==='active')showActive(cur);else showPending(cur);}else showPending(cur);}).catch(e=>{let c=loadCurrent();if(c)showPending(c);});}
+function resetLocal(){if(confirm('Reset?')){localStorage.removeItem('rise_current_student');showJoin();}}
+(function(){let cur=loadCurrent();if(cur){if(cur.status==='active')showActive(cur);else showPending(cur);}})();
 </script>
-<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+</body>
 </html>
